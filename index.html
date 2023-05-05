@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="style.css" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <title>Contact-Book</title>
+</head>
+
+<body>
+       <header>
+            <h1> Contact-Book
+                <img src="" />
+            </h1>
+
+        </header>
+       
+        <div class="container">
+            <!-- Add-Contacts -->
+
+            <div class="Add-Container">
+                <label for="name">Add New Contact</label>
+                <div class="add-inputs">
+                    <input type="text" id="name" placeholder="Enter contact Name" required />
+                    <input type="text" id="number" placeholder="Enter contact Number" required />
+                </div>
+                <button type="submit" class="Add-Contacts" onclick="addContact()">Submit</button>
+                <p id="displayNoti"></p>
+
+            </div>
+            <!-- Get-contact -->
+            <div class="get-container">
+                <p class="name">Get-contact-details</p>
+                <div class="get-input">
+                    <input type="text" id="Get-contactName" placeholder="Enter contact name" required>
+
+
+                </div>
+                <button type="submit" id="Get-contact" onclick="getContact()">Get-Detail's</button>
+
+            </div>
+            <p id="displayContact"></p>
+            <div class="reset" onclick="reset()">
+                Reset
+            </div>
+        </div>
+ 
+
+    <script>
+        function addContact() {
+            let cName = document.querySelector("#name").value.toUpperCase();
+            let cNumber = document.querySelector("#number").value;
+            let displayNotification = document.querySelector('#displayNoti');
+
+
+            if (cName == '' || cNumber == '') {
+                displayNotification.innerHTML = "please enter details  !";
+                displayNotification.style.color = "red";
+
+            }
+            else {
+                localStorage.setItem(cName, cNumber);
+                displayNotification.innerHTML = "Successfully added new contact";
+                displayNotification.style.color = "green";
+            }
+            setInterval(() => {
+                displayNotification.innerHTML = "";
+
+            }, 2000)
+
+
+        }
+
+        function getContact() {
+            let displayDetail = document.querySelector("#displayContact");
+            let displayOutput = document.getElementById("displayContact");
+            displayOutput.classList.add("displayContactStyle");
+            let getContactName =
+                document.querySelector("#Get-contactName").value.toUpperCase();
+            //getItem
+            let output = localStorage.getItem(getContactName);
+            displayDetail.innerHTML = `${getContactName} : ${output == null ? '(   This contact detail is not added' : `+91 ${output}`
+                }`;
+            getContactName = '';
+        }
+
+        function reset() {
+            location.reload();
+        }
+
+
+
+    </script>
+
+
+</body>
+
+</html>
