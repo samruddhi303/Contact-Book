@@ -20,7 +20,9 @@ body{
     padding:20px;
     margin:25px;
     position: relative;
-   
+    border: #4efa15 solid 4px;
+    filter:drop-shadow(0 0 20px #121212);
+    
 
 }
 
@@ -125,4 +127,5 @@ input[type='text'] {
     outline: invert;
 
 }
+
 

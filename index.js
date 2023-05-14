@@ -12,7 +12,7 @@ function addContact() {
     }
     else {
         localStorage.setItem(cName, cNumber);
-        displayNotification.innerHTML = "Successfully added new contact";
+        displayNotification.innerHTML = "Successfully added new contact...!!";
         displayNotification.style.color = "green";
     }
     setInterval(() => {
